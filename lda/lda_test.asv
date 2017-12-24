@@ -1,0 +1,20 @@
+%% 自编写的lda
+%输入的格式是model,data和label，输出为预测的结果及正确率
+function [predict_label,acc]=lda_test(model,data,label)
+%如果数据没有排序，先要进行排序
+[data,label]=data_sort(data,label);
+
+class_num=length(unique(label));
+sample_size=length(label)/class_num;
+sample_dim=size(data,2);
+compare_label=reshape(meshgrid(1:class_num,1:sample_size),class_num*sample_size,1);
+
+
+model_Temp=model.mo
+for i=1:class_num
+    ground_truth=compare_label((i-1)*sample_size+1:i*sample_size);
+    predict_attr=y((i-1)*sample_size+1:i*sample_size,1:7);
+    label1_out((i-1)*sample_size+1:i*sample_size,f)=lda_predict(model_Temp,Classifier_Pra,predict_attr);%自编写predict函数
+end
+
+end
